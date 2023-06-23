@@ -21,7 +21,7 @@ jobs:
         uses: actions/checkout@v2
         
       - name: Enviar e-mail
-        working-directory: ./workflow
+        working-directory: .github/workflows
         env:
           CLIENT_ID: ${{ secrets.CLIENT_ID }}
           CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
