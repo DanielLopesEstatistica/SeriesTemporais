@@ -23,20 +23,13 @@ jobs:
       - name: Enviar e-mail
         working-directory: .github/workflows
         env:
-          CLIENT_ID: ${{ secrets.CLIENT_ID }}
-          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
           MEU_EMAIL: ${{ secrets.MEU_EMAIL }}
           SEU_EMAIL: ${{ secrets.SEU_EMAIL }}
         run: |
           Rscript -e 'library(gmailr);
-                      id <- Sys.getenv("CLIENT_ID");
-                      secret <- Sys.getenv("CLIENT_SECRET");
                       meu_email <- Sys.getenv("MEU_EMAIL");
                       seu_email <- Sys.getenv("SEU_EMAIL");
-                      print(id);
-                      print(secret);
-                      print(meu_email);
-                      gm_auth_configure(key = id, secret = secret);
+                      gm_auth(email = meu_email)
                       mensagem <- "Teste";
                       arquivo <- file.path("rato.jpg");
                       print(getwd());
