@@ -19,11 +19,14 @@ jobs:
       - name: Enviar e-mail
         run: |
           Rscript -e 'library(gmailr);
-                      id = Sys.getenv("CLIENT_ID");
-                      secret = Sys.getenv("CLIENT_SECRET");
-                      gm_auth_configure(key = id, secret = secret);
+                      id <- Sys.getenv("CLIENT_ID");
+                      secret <- Sys.getenv("CLIENT_SECRET");
                       meu_email <- Sys.getenv("MEU_EMAIL");
                       seu_email <- Sys.getenv("SEU_EMAIL");
+                      print(id);
+                      print(secret);
+                      print(meu_email);
+                      gm_auth_configure(key = id, secret = secret);
                       mensagem <- "Teste";
                       arquivo <- "rato.jpg";
                       msg <- gm_mime() |> gm_from(meu_email) |>
