@@ -50,3 +50,15 @@ jobs:
                              gm_to(seu_email) |> gm_text_body(mensagem) |>
                              gm_attach_file(arquivo);
                       gm_send_message(msg);'
+      
+      - name: Commit changes
+        run: |
+          cd .github/workflows
+          git add arquivo.csv
+          git commit -m "Update arquivo.csv"
+
+      - name: Push changes
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git push origin HEAD:${GITHUB_REF}
