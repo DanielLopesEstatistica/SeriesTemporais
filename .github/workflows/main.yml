@@ -1,0 +1,32 @@
+name: Enviar E-mail Diariamente
+
+on:
+  schedule:
+    - cron: '0 20 * * *' # Executa todos os dias às 20h
+
+jobs:
+  send-email:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v2
+
+      - name: Configurar ambiente R
+        uses: r-lib/actions/setup-r@v1
+
+      - name: Instalar pacotes
+        run: install.packages("gmailr")
+
+      - name: Enviar e-mail
+        run: |
+          Rscript -e 'library(gmailr);
+                      gm_auth_configure(path = "senha.json");
+                      meu_email <- # meu email;
+                      seu_email <- # email para ser enviado;
+                      mensagem <- "Teste";
+                      arquivo <- "rato.jpg";
+                      msg <- gm_mime() |> gm_from(meu_email) |>
+                             gm_to(seu_email) |> gm_text_body(mensagem) |>
+                             gm_attach_file(arquivo);
+                      gm_send_message(msg);'
