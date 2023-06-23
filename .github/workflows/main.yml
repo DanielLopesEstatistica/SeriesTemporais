@@ -19,7 +19,9 @@ jobs:
       - name: Enviar e-mail
         run: |
           Rscript -e 'library(gmailr);
-                      gm_auth_configure(path = Sys.getenv("MEU_EMAIL"));
+                      id = Sys.getenv("CLIENT_ID");
+                      secret = Sys.getenv("CLIENT_SECRET");
+                      gm_auth_configure(key = id, secret = secret);
                       meu_email <- Sys.getenv("MEU_EMAIL");
                       seu_email <- Sys.getenv("SEU_EMAIL");
                       mensagem <- "Teste";
