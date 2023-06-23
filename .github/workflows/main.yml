@@ -35,7 +35,7 @@ jobs:
                       print(Sys.getenv());
                       gm_auth_configure(key = id, secret = secret);
                       mensagem <- "Teste";
-                      arquivo <- "rato.jpg";
+                      arquivo <- file.path(Sys.getenv("GITHUB_WORKSPACE"), "rato.jpg");
                       msg <- gm_mime() |> gm_from(meu_email) |>
                              gm_to(seu_email) |> gm_text_body(mensagem) |>
                              gm_attach_file(arquivo);
