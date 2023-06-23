@@ -41,6 +41,7 @@ jobs:
                       gm_auth(email = meu_email);
                       dados = read.csv("arquivo.csv");
                       print(dados);
+                      dados = dados[-1];
                       dados[1,1] = dados[1,1] + 1;
                       write.csv(dados, file = "arquivo.csv");
                       mensagem <- "Teste";
