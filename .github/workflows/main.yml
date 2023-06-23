@@ -51,6 +51,12 @@ jobs:
                              gm_attach_file(arquivo);
                       gm_send_message(msg);'
       
+      - name: Set git user
+        run: |
+          cd .github/workflows
+          git config --local user.email "d236081@dac.unicamp.br"
+          git config --local user.name "DanielLopesEstatistica"
+
       - name: Commit changes
         run: |
           cd .github/workflows
