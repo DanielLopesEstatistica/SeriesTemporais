@@ -4,20 +4,17 @@ on:
   workflow_dispatch
 
 jobs:
-  send-email:
+  import-data:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout do código
-        uses: actions/checkout@v2
+      - name: Set up R
+        uses: r-lib/actions/setup-r@v2
 
-      - name: Configurar ambiente R
-        uses: r-lib/actions/setup-r@v1
+      - name: Install packages
+        uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          r-version: '4.2' # Use uma versão do R suportada
-
-      - name: Instalar pacotes
-        run: install.packages("gmailr")
+          packages: |
+            any::gmailr
 
       - name: Enviar e-mail
         run: |
