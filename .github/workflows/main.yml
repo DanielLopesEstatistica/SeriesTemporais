@@ -29,13 +29,10 @@ jobs:
                       secret <- Sys.getenv("CLIENT_SECRET");
                       meu_email <- Sys.getenv("MEU_EMAIL");
                       seu_email <- Sys.getenv("SEU_EMAIL");
-                      print(id);
-                      print(secret);
-                      print(meu_email);
-                      print(Sys.getenv());
                       gm_auth_configure(key = id, secret = secret);
                       mensagem <- "Teste";
-                      arquivo <- file.path("./workflow/rato.jpg");
+                      arquivo <- file.path("rato.jpg");
+                      print(getwd());
                       msg <- gm_mime() |> gm_from(meu_email) |>
                              gm_to(seu_email) |> gm_text_body(mensagem) |>
                              gm_attach_file(arquivo);
