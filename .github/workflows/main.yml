@@ -6,6 +6,7 @@ on:
 jobs:
   import-data:
     runs-on: ubuntu-latest
+    environment: my_env
     steps:
       - name: Set up R
         uses: r-lib/actions/setup-r@v2
@@ -18,10 +19,10 @@ jobs:
 
       - name: Enviar e-mail
         env:
-          CLIENT_ID: ${{ secrets.my_env_CLIENT_ID }}
-          CLIENT_SECRET: ${{ secrets.my_env_CLIENT_SECRET }}
-          MEU_EMAIL: ${{ secrets.my_env_MEU_EMAIL }}
-          SEU_EMAIL: ${{ secrets.my_env_SEU_EMAIL }}
+          CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+          MEU_EMAIL: ${{ secrets.MEU_EMAIL }}
+          SEU_EMAIL: ${{ secrets.SEU_EMAIL }}
         run: |
           Rscript -e 'library(gmailr);
                       id <- Sys.getenv("CLIENT_ID");
