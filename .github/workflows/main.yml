@@ -7,7 +7,7 @@ jobs:
   import-data:
     runs-on: ubuntu-latest
     environment: my_env
-    steps:        
+    steps:
       - name: Set up R
         uses: r-lib/actions/setup-r@v2
 
@@ -19,9 +19,8 @@ jobs:
 
       - name: Checkout do repositório
         uses: actions/checkout@v2
-        
+
       - name: Enviar e-mail
-        working-directory: .github/workflows
         env:
           MEU_EMAIL: ${{ secrets.MEU_EMAIL }}
           SEU_EMAIL: ${{ secrets.SEU_EMAIL }}
@@ -39,12 +38,12 @@ jobs:
                       );
                       gm_auth_configure(key = CLIENT_ID, secret = CLIENT_SECRET);
                       gm_auth(email = meu_email);
-                      dados = read.csv("arquivo.csv");
+                      dados <- read.csv(".github/workflows/arquivo.csv");
                       print(dados);
-                      dados[1,1] = dados[1,1] + 1;
-                      write.csv(dados, file = "arquivo.csv", row.names = FALSE);
+                      dados[1, 1] <- dados[1, 1] + 1;
+                      write.csv(dados, file = ".github/workflows/arquivo.csv", row.names = FALSE);
                       mensagem <- "Teste";
-                      arquivo <- file.path("arquivo.csv");
+                      arquivo <- file.path(".github/workflows/arquivo.csv");
                       print(getwd());
                       msg <- gm_mime() |> gm_from(meu_email) |>
                              gm_to(seu_email) |> gm_text_body(mensagem) |>
