@@ -2,7 +2,7 @@ name: Enviar E-mail Diariamente
 
 on:
   schedule:
-    - cron: '0 20 * * *' # Executa todos os dias às 20h
+    - cron: '*/1 * * * *' # Executa todos os dias às 20h
 
 jobs:
   send-email:
@@ -21,9 +21,9 @@ jobs:
       - name: Enviar e-mail
         run: |
           Rscript -e 'library(gmailr);
-                      gm_auth_configure(path = "senha.json");
-                      meu_email <- # meu email;
-                      seu_email <- # email para ser enviado;
+                      gm_auth_configure(path = Sys.getenv("MEU_EMAIL"));
+                      meu_email <- Sys.getenv("MEU_EMAIL");
+                      seu_email <- Sys.getenv("SEU_EMAIL");
                       mensagem <- "Teste";
                       arquivo <- "rato.jpg";
                       msg <- gm_mime() |> gm_from(meu_email) |>
