@@ -24,10 +24,10 @@ jobs:
           SEU_EMAIL: ${{ secrets.my_env_SEU_EMAIL }}
         run: |
           Rscript -e 'library(gmailr);
-                      id <- Sys.getenv("my_env_CLIENT_ID");
-                      secret <- Sys.getenv("my_env_CLIENT_SECRET");
-                      meu_email <- Sys.getenv("my_env_MEU_EMAIL");
-                      seu_email <- Sys.getenv("my_env_SEU_EMAIL");
+                      id <- Sys.getenv("CLIENT_ID");
+                      secret <- Sys.getenv("CLIENT_SECRET");
+                      meu_email <- Sys.getenv("MEU_EMAIL");
+                      seu_email <- Sys.getenv("SEU_EMAIL");
                       print(id);
                       print(secret);
                       print(meu_email);
