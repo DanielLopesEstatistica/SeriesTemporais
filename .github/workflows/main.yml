@@ -33,6 +33,9 @@ jobs:
                       secret <- Sys.getenv("CLIENT_SECRET");
                       meu_email <- Sys.getenv("MEU_EMAIL");
                       seu_email <- Sys.getenv("SEU_EMAIL");
+                      print(id);
+                      print(secret);
+                      print(meu_email);
                       gm_auth_configure(key = id, secret = secret);
                       mensagem <- "Teste";
                       arquivo <- file.path("rato.jpg");
