@@ -8,6 +8,12 @@ jobs:
     runs-on: ubuntu-latest
     environment: my_env
     steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v2
+
+      - name: Mudar para a pasta workflow
+        working-directory: ./workflow
+        
       - name: Set up R
         uses: r-lib/actions/setup-r@v2
 
