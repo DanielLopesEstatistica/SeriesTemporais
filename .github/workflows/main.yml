@@ -35,7 +35,7 @@ jobs:
           REPO_KEY: ${{secrets.GITHUB_TOKEN}}
           username: github-actions
   import-data:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     environment: my_env
     steps:        
       - name: Set up R
